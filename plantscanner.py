@@ -16,6 +16,7 @@ picam2.start()
 tbot = Trilobot()
 
 speed = 0.5
+stop_distance = 15
 
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
@@ -66,12 +67,12 @@ def robot():
                         tbot.turn_right(speed)
                         tbot.set_underlight(LIGHT_REAR_RIGHT, YELLOW, show=True)
                         tbot.set_underlight(LIGHT_REAR_LEFT, YELLOW, show=False)
-                    elif 370 > cx > 270 and distance > 10:
+                    elif 370 > cx > 270 and distance > stop_distance:
                         tbot.forward(speed * 2)
                         tbot.set_underlight(LIGHT_REAR_LEFT, GREEN, show=True)
                         tbot.set_underlight(LIGHT_REAR_RIGHT, GREEN, show=True)
                         print(distance)
-                    elif 370 > cx > 270 and distance < 10:
+                    elif 370 > cx > 270 and distance < stop_distance:
                         plants += 1
                         time.sleep(1)
                         tbot.stop()
